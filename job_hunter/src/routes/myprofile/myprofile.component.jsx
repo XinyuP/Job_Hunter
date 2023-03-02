@@ -5,7 +5,7 @@ import { useState } from 'react';
 class MyProfile extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'coconut' };
+		this.state = { value: '' };
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,20 @@ class MyProfile extends React.Component {
 	}
 
 	handleSubmit(event) {
+		// var list = document.getElementById("list");
 		event.preventDefault();
+		var title = document.getElementById('job-title').val();
+		var company = document.getElementById('company').val();
+
+		document.getElementById('job-list').append('<li>'+company + ': ' + title +'</li>');
+		// var itemsByTagName = document.getElementsByTagName("li");
+		// list.innerHTML += '<li>item ' + i++ + '</li>'
+		alert('yes');
+	}
+
+	handleSubmit2(event) {
+		event.preventDefault();
+		
 		alert('We will send you notification as soon as the job is posted!');
 	}
 
@@ -75,19 +88,22 @@ class MyProfile extends React.Component {
                     </form> */}
 						{/* <div className='space'></div> */}
 						{/* </input></input> <input type="submit" value="Submit"> */}
-						<button className='btn' onSubmit={this.handleSubmit}>
+						<button className='btn' onClick={this.handleSubmit}>
 							Add
 						</button>
 					</div>
 					<div className='s1'></div>
 					<div className='my-job-list'>
 						<p className='job-list'>YOUR CURRENT JOB SUBSCRIPTION:</p>
-						<ul className='job-list'>
+						<ul className='job-list' id='job-list'>
+							<li>HubSpot: Software Engineer</li>
+							<li>HubSpot: Software Engineer Co-op</li>
+							<li>HubSpot: Software Engineer Internship</li>
 							<li>Google: Software Engineer</li>
+							<li>Google: Software Engineer Internship</li>
 							<li>Apple: Software Engineer</li>
-							<li>Amazon: Software Engineer</li>
+							<li>Amazon: Software Engineer Internship</li>
 							<li>Meta: Software Engineer</li>
-							<li>Tesla: Software Engineer</li>
 							<li>...</li>
 						</ul>
 						<p className='explain'>
@@ -133,7 +149,7 @@ class MyProfile extends React.Component {
 
 							<br />
 						</form>
-						<button className='btn' onSubmit={this.handleSubmit}>
+						<button className='btn' onClick={this.handleSubmit2}>
 							Send Me Notification!
 						</button>
 						<div className='space-end'></div>
